@@ -2,6 +2,9 @@
 Random programming stuff I always forget and spend too much time looking up again
 
 - [Python](#python)
+  - [CLI](#cli)
+    - [Execute python command directly on the CLI](#execute-python-command-directly-on-the-cli)
+    - [Execute python module directly on the CLI](#execute-python-module-directly-on-the-cli)
   - [Conda](#conda)
     - [Install packages and related options](#install-packages-and-related-options)
     - [Create new environment](#create-new-environment)
@@ -10,6 +13,7 @@ Random programming stuff I always forget and spend too much time looking up agai
 - [Bash](#bash)
   - [General stuff](#general-stuff)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
+    - [See volumes and use](#see-volumes-and-use)
 - [Docker](#docker)
   - [Docker CLI](#docker-cli)
     - [Start a container (and flags)](#start-a-container-and-flags)
@@ -21,6 +25,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Download an image](#download-an-image)
     - [Append a command to a docker run](#append-a-command-to-a-docker-run)
     - [Execute a command on a running container](#execute-a-command-on-a-running-container)
+    - [Get access to bash on a running container](#get-access-to-bash-on-a-running-container)
     - [Run the container in the background mode (detach)](#run-the-container-in-the-background-mode-detach)
     - [Attach back a container](#attach-back-a-container)
     - [map stdin of host to docker container's](#map-stdin-of-host-to-docker-containers)
@@ -39,6 +44,18 @@ Random programming stuff I always forget and spend too much time looking up agai
 
 
 # Python
+
+## CLI
+
+### Execute python command directly on the CLI
+
+`python -c [python code]`
+
+### Execute python module directly on the CLI
+
+`python -m [python module]`
+
+The module will be looked for anywhere on the `sys.path` 
 
 ## Conda
 
@@ -85,6 +102,11 @@ The current env has a little star
 ### Count the number of files in a directory
 `ls [dir] | wc -l`
 
+### See volumes and use
+
+`df -H`
+
+`-H` is to convert to bites or bytes, never remember which one (`-h` is for the other one).
 
 # Docker
 
@@ -142,6 +164,10 @@ e.g. `docker run ubuntu sleep 5`
 ### Execute a command on a running container
 
 `docker exec [image name] [command]`
+
+### Get access to bash on a running container
+
+`docker exec -t -i [container name] /bin/bash`
 
 ### Run the container in the background mode (detach)
 
