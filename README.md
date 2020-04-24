@@ -3,6 +3,7 @@ Random programming stuff I always forget and spend too much time looking up agai
 
 - [Python](#python)
   - [Conda](#conda)
+    - [Install packages and related options](#install-packages-and-related-options)
     - [Create new environment](#create-new-environment)
     - [Switch to environments and back](#switch-to-environments-and-back)
     - [List all environments](#list-all-environments)
@@ -40,6 +41,17 @@ Random programming stuff I always forget and spend too much time looking up agai
 # Python
 
 ## Conda
+
+### Install packages and related options
+
+`conda install [package]`
+
+flags:
+- `-y` for yes : agree to the confirmation
+- `-q` for quiet : no progress bar
+- `-n` or `--name` : install packages to a specific env
+- `-c` or `--channel` : additionnal channels to search for packages, like conda-forge or pypi (or even pytorch, if you want to install torchvision for example)
+- `--file` : read package versions from the given file (commonly something like `--file requirements.txt`)
 
 ### Create new environment
 
