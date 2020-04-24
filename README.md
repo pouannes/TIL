@@ -26,6 +26,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Append a command to a docker run](#append-a-command-to-a-docker-run)
     - [Execute a command on a running container](#execute-a-command-on-a-running-container)
     - [Get access to bash on a running container](#get-access-to-bash-on-a-running-container)
+    - [Launch bash on a container id (like the last image before buid failure)](#launch-bash-on-a-container-id-like-the-last-image-before-buid-failure)
     - [Run the container in the background mode (detach)](#run-the-container-in-the-background-mode-detach)
     - [Attach back a container](#attach-back-a-container)
     - [map stdin of host to docker container's](#map-stdin-of-host-to-docker-containers)
@@ -168,6 +169,10 @@ e.g. `docker run ubuntu sleep 5`
 ### Get access to bash on a running container
 
 `docker exec -t -i [container name] /bin/bash`
+
+### Launch bash on a container id (like the last image before buid failure)
+
+`docker run --rm -it [id_last_working_layer] bash -il`
 
 ### Run the container in the background mode (detach)
 
