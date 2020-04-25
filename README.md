@@ -10,8 +10,13 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Create new environment](#create-new-environment)
     - [Switch to environments and back](#switch-to-environments-and-back)
     - [List all environments](#list-all-environments)
-- [Bash](#bash)
+- [SSH](#ssh)
   - [General stuff](#general-stuff)
+    - [Connect to an instance via .pem file](#connect-to-an-instance-via-pem-file)
+    - [Create an SSH tunnel (for example for jupyter notebooks)](#create-an-ssh-tunnel-for-example-for-jupyter-notebooks)
+    - [Copying files between local computer and instance](#copying-files-between-local-computer-and-instance)
+- [Bash](#bash)
+  - [General stuff](#general-stuff-1)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
     - [See volumes and use](#see-volumes-and-use)
 - [Docker](#docker)
@@ -95,6 +100,30 @@ or when conda isn't configured for your shell: `source activate [env]`
 
 The current env has a little star
 
+
+# SSH
+
+## General stuff
+
+### Connect to an instance via .pem file
+
+`ssh -i [.pem file] [user]@[ip adress]`
+
+flags:
+- `-v` for verbose mode 
+
+### Create an SSH tunnel (for example for jupyter notebooks)
+
+`ssh [user]@[ip address] -i [.pem file] -N -L localhost:[local port]:localhost:[remote port]`
+
+For example to redirect a remote notebook (open through `jupyter notebook --no-browser --port 8887`):
+`ssh -v [user]@[ip] -i [.pem file] -N -L localhost:8888:localhost:8887%`
+
+### Copying files between local computer and instance
+
+`scp -i [.pem file] [local file] [user]@[ip]:[remote path]`
+
+To copy entire directories, add the `r` recursive option after the key.
 
 # Bash
 
