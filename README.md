@@ -1,4 +1,5 @@
 # TIL
+
 Random programming stuff I always forget and spend too much time looking up again
 
 - [Python](#python)
@@ -10,6 +11,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Create new environment](#create-new-environment)
     - [Switch to environments and back](#switch-to-environments-and-back)
     - [List all environments](#list-all-environments)
+    - [Add a conda env to jupyter notebooks](#add-a-conda-env-to-jupyter-notebooks)
 - [SSH](#ssh)
   - [General stuff](#general-stuff)
     - [Connect to an instance via .pem file](#connect-to-an-instance-via-pem-file)
@@ -48,7 +50,6 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Copy directory](#copy-directory)
     - [Specify command ran when the container is run](#specify-command-ran-when-the-container-is-run)
 
-
 # Python
 
 ## CLI
@@ -61,7 +62,7 @@ Random programming stuff I always forget and spend too much time looking up agai
 
 `python -m [python module]`
 
-The module will be looked for anywhere on the `sys.path` 
+The module will be looked for anywhere on the `sys.path`
 
 ## Conda
 
@@ -70,6 +71,7 @@ The module will be looked for anywhere on the `sys.path`
 `conda install [package]`
 
 flags:
+
 - `-y` for yes : agree to the confirmation
 - `-q` for quiet : no progress bar
 - `-n` or `--name` : install packages to a specific env
@@ -81,6 +83,7 @@ flags:
 `conda create --name [myenv]`
 
 Additionnal flags for `conda create`:
+
 - `-y` to agree directly (no confirmation)
 - `-n` in place of `--name`
 - Just put the package after everything to install them
@@ -94,12 +97,21 @@ or when conda isn't configured for your shell: `source activate [env]`
 
 `conda deactivate`
 
-
 ### List all environments
+
 `conda info --envs`
 
 The current env has a little star
 
+### Add a conda env to jupyter notebooks
+
+First make sure to have `ipykernel` installed:
+
+`conda install -c anaconda ipykernel`
+
+Then add the env:
+
+`python -m ipykernel install --user --name=[env name]`
 
 # SSH
 
@@ -110,7 +122,8 @@ The current env has a little star
 `ssh -i [.pem file] [user]@[ip adress]`
 
 flags:
-- `-v` for verbose mode 
+
+- `-v` for verbose mode
 
 ### Create an SSH tunnel (for example for jupyter notebooks)
 
@@ -130,6 +143,7 @@ To copy entire directories, add the `r` recursive option after the key.
 ## General stuff
 
 ### Count the number of files in a directory
+
 `ls [dir] | wc -l`
 
 ### See volumes and use
@@ -149,12 +163,13 @@ To copy entire directories, add the `r` recursive option after the key.
 Either locally, or if it's not found goes to docker hub
 
 flags:
+
 - Run a specific version of an image(a tag): `docker run [image name]:tag`. If no tag is provided, the tag `:latest` is used
 - `-i` for interactive mode : link host stdin to container
 - `-t` for terminal : attach to the terminal
 - `-p` for port, e.g. `-p 80:5000` to link port 80 on host to port 5000 on container
 - `-v` for volume : `-v [host dir]:[container dir]` to map the two directories and enable data persistance
-- `-e` for env : `-e [ENV VARIABLE]:[value]` to pass env variable within the container 
+- `-e` for env : `-e [ENV VARIABLE]:[value]` to pass env variable within the container
 - `--entrypoint [command]` : overwrite entry point
 - `--network=` : specify on which network you want the docker. Default is `bridge`, other options are `--network=none` and `--network=host`
 
@@ -163,6 +178,7 @@ flags:
 `docker ps`
 
 flags:
+
 - `-a` to see all containers, running or not
 
 ### Stop a container
@@ -257,13 +273,13 @@ e.g. `docker run -v /opt/datadir/:/var/lib/mysql mysql`
 
 `RUN [command]`
 
-### Copy directory 
+### Copy directory
 
 `COPY [image dir] [host dir]`
 
 e.g. `COPY . /opt/source-code`
 
-### Specify command ran when the container is run 
+### Specify command ran when the container is run
 
 `ENTRYPOINT [command]`
 
@@ -273,8 +289,10 @@ For example:
 
 You can combine an `ENTRYPOINT` and a `CMD` to have default values.
 For example:
+
 ```
 ENTRYPOINT['sleep']
 CMD['5']
 ```
-In that dockerfile the default command run is `sleep 5`, but if you override it as in the previous example, `CMD` will be overwritten and `sleep 10` will be run. 
+
+In that dockerfile the default command run is `sleep 5`, but if you override it as in the previous example, `CMD` will be overwritten and `sleep 10` will be run.
