@@ -18,6 +18,10 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Create an SSH tunnel (for example for jupyter notebooks)](#create-an-ssh-tunnel-for-example-for-jupyter-notebooks)
     - [Copying files between local computer and instance](#copying-files-between-local-computer-and-instance)
 - [Bash](#bash)
+  - [git](#git)
+    - [list remotes](#list-remotes)
+    - [remove existing remote](#remove-existing-remote)
+    - [add origin remote](#add-origin-remote)
   - [General stuff](#general-stuff-1)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
     - [See volumes and use](#see-volumes-and-use)
@@ -139,6 +143,22 @@ For example to redirect a remote notebook (open through `jupyter notebook --no-b
 To copy entire directories, add the `r` recursive option after the key.
 
 # Bash
+
+## git
+
+### list remotes
+
+`git remote -v`
+
+### remove existing remote
+
+`git remote rm [remote name]`
+
+e.g. `git remote rm origin`
+
+### add origin remote
+
+`git remote add origin [remote link]`
 
 ## General stuff
 
