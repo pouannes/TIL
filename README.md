@@ -11,6 +11,10 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Delete the word to the left of the cursor](#delete-the-word-to-the-left-of-the-cursor)
     - [Redraw the screen at the prompt](#redraw-the-screen-at-the-prompt)
     - [Transpose a character at the cursor with a character to the left of the cursor](#transpose-a-character-at-the-cursor-with-a-character-to-the-left-of-the-cursor)
+- [gcloud CLI](#gcloud-cli)
+  - [General stuff](#general-stuff)
+    - [Get current project id](#get-current-project-id)
+    - [Change current project](#change-current-project)
 - [Python](#python)
   - [CLI](#cli-1)
     - [Execute python command directly on the CLI](#execute-python-command-directly-on-the-cli)
@@ -22,7 +26,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [List all environments](#list-all-environments)
     - [Add a conda env to jupyter notebooks](#add-a-conda-env-to-jupyter-notebooks)
 - [SSH](#ssh)
-  - [General stuff](#general-stuff)
+  - [General stuff](#general-stuff-1)
     - [Connect to an instance via .pem file](#connect-to-an-instance-via-pem-file)
     - [Create an SSH tunnel (for example for jupyter notebooks)](#create-an-ssh-tunnel-for-example-for-jupyter-notebooks)
     - [Copying files between local computer and instance](#copying-files-between-local-computer-and-instance)
@@ -31,7 +35,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [list remotes](#list-remotes)
     - [remove existing remote](#remove-existing-remote)
     - [add origin remote](#add-origin-remote)
-  - [General stuff](#general-stuff-1)
+  - [General stuff](#general-stuff-2)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
     - [See volumes and use](#see-volumes-and-use)
 - [Docker](#docker)
@@ -94,6 +98,18 @@ Random programming stuff I always forget and spend too much time looking up agai
 ### Transpose a character at the cursor with a character to the left of the cursor
 
 `ctrl + t`
+
+# gcloud CLI
+
+## General stuff
+
+### Get current project id
+
+`gcloud config get-value project`
+
+### Change current project
+
+`gcloud config set project [project id]`
 
 # Python
 
