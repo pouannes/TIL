@@ -2,8 +2,17 @@
 
 Random programming stuff I always forget and spend too much time looking up again
 
+- [CLI](#cli)
+  - [Shortcuts](#shortcuts)
+    - [Move cursor at the beginning of the line](#move-cursor-at-the-beginning-of-the-line)
+    - [Move cursor at the end of the line](#move-cursor-at-the-end-of-the-line)
+    - [Delete all characters from the cursor to the beginning of the line](#delete-all-characters-from-the-cursor-to-the-beginning-of-the-line)
+    - [Delete all characters from the cursor the end of the line](#delete-all-characters-from-the-cursor-the-end-of-the-line)
+    - [Delete the word to the left of the cursor](#delete-the-word-to-the-left-of-the-cursor)
+    - [Redraw the screen at the prompt](#redraw-the-screen-at-the-prompt)
+    - [Transpose a character at the cursor with a character to the left of the cursor](#transpose-a-character-at-the-cursor-with-a-character-to-the-left-of-the-cursor)
 - [Python](#python)
-  - [CLI](#cli)
+  - [CLI](#cli-1)
     - [Execute python command directly on the CLI](#execute-python-command-directly-on-the-cli)
     - [Execute python module directly on the CLI](#execute-python-module-directly-on-the-cli)
   - [Conda](#conda)
@@ -53,6 +62,38 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Run commands](#run-commands)
     - [Copy directory](#copy-directory)
     - [Specify command ran when the container is run](#specify-command-ran-when-the-container-is-run)
+
+# CLI
+
+## Shortcuts
+
+### Move cursor at the beginning of the line
+
+`ctrl + a`
+
+### Move cursor at the end of the line
+
+`ctrl + e`
+
+### Delete all characters from the cursor to the beginning of the line
+
+`ctrl + u`
+
+### Delete all characters from the cursor the end of the line
+
+`ctrl + k`
+
+### Delete the word to the left of the cursor
+
+`ctrl + w`
+
+### Redraw the screen at the prompt
+
+`ctrl + l`
+
+### Transpose a character at the cursor with a character to the left of the cursor
+
+`ctrl + t`
 
 # Python
 
