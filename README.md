@@ -35,6 +35,8 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [list remotes](#list-remotes)
     - [remove existing remote](#remove-existing-remote)
     - [add origin remote](#add-origin-remote)
+    - [Undo last commit (and preserve the changes done to the files)](#undo-last-commit-and-preserve-the-changes-done-to-the-files)
+    - [Undo last commit (and DO NOT preserve the changes done to the files)](#undo-last-commit-and-do-not-preserve-the-changes-done-to-the-files)
   - [General stuff](#general-stuff-2)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
     - [See volumes and use](#see-volumes-and-use)
@@ -216,6 +218,16 @@ e.g. `git remote rm origin`
 ### add origin remote
 
 `git remote add origin [remote link]`
+
+### Undo last commit (and preserve the changes done to the files)
+
+`git reset --soft HEAD~1`
+
+`HEAD~1` means you want to reset the `HEAD` to one commit before in the log history.
+
+### Undo last commit (and DO NOT preserve the changes done to the files)
+
+`git reset --hard HEAD~1`
 
 ## General stuff
 
