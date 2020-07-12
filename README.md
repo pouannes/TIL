@@ -48,6 +48,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Remove a container](#remove-a-container)
     - [List available images (locally)](#list-available-images-locally)
     - [Remove an image](#remove-an-image)
+    - [Remove all containers ever created still in memory](#remove-all-containers-ever-created-still-in-memory)
     - [Download an image](#download-an-image)
     - [Append a command to a docker run](#append-a-command-to-a-docker-run)
     - [Execute a command on a running container](#execute-a-command-on-a-running-container)
@@ -285,6 +286,10 @@ flags:
 ### Remove an image
 
 `docker rmi [image name]`
+
+### Remove all containers ever created still in memory
+
+`docker system prune`
 
 ### Download an image
 
