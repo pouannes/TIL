@@ -80,6 +80,8 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Apply a configuration file](#apply-a-configuration-file)
     - [See running objects of a given kind](#see-running-objects-of-a-given-kind)
     - [(imperatively) change a container version](#imperatively-change-a-container-version)
+    - [Get the logs of a container](#get-the-logs-of-a-container)
+    - [Exec a command inside a container](#exec-a-command-inside-a-container)
 
 # CLI
 
@@ -320,6 +322,8 @@ e.g. `docker run ubuntu sleep 5`
 
 `docker exec -t -i [container name] /bin/bash`
 
+You can also just put `-it` instead of `-i -t`, and `sh` instead of `/bin/bash`
+
 ### Launch bash on a container id (like the last image before buid failure)
 
 `docker run --rm -it [id_last_working_layer] bash -il`
@@ -447,3 +451,11 @@ e.g. `kubectl get pods`
 e.g.
 
 `kubectl set image deployment/client-deployment client=pouannes/image_name:latest`
+
+### Get the logs of a container
+
+`kubectl logs [pod name]`
+
+### Exec a command inside a container
+
+`kubectl exec [pod name]`
