@@ -75,6 +75,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Start a new minikube VM with a specific driver](#start-a-new-minikube-vm-with-a-specific-driver)
     - [Stop and delete a running minikube VM](#stop-and-delete-a-running-minikube-vm)
     - [Get ip where minikube VM is exposed](#get-ip-where-minikube-vm-is-exposed)
+    - [Reconfigure the docker CLI to connect to docker-server inside minikube](#reconfigure-the-docker-cli-to-connect-to-docker-server-inside-minikube)
   - [kubectl](#kubectl)
     - [Apply a configuration file](#apply-a-configuration-file)
     - [See running objects of a given kind](#see-running-objects-of-a-given-kind)
@@ -420,6 +421,12 @@ In that dockerfile the default command run is `sleep 5`, but if you override it 
 ### Get ip where minikube VM is exposed
 
 `minikube ip`
+
+### Reconfigure the docker CLI to connect to docker-server inside minikube
+
+`eval $(minikube docker-env)`
+
+Only works for current terminal window
 
 ## kubectl
 
