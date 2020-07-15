@@ -69,6 +69,16 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Run commands](#run-commands)
     - [Copy directory](#copy-directory)
     - [Specify command ran when the container is run](#specify-command-ran-when-the-container-is-run)
+- [Kubernetes](#kubernetes)
+  - [minikube](#minikube)
+    - [Start a new minikube VM](#start-a-new-minikube-vm)
+    - [Start a new minikube VM with a specific driver](#start-a-new-minikube-vm-with-a-specific-driver)
+    - [Stop and delete a running minikube VM](#stop-and-delete-a-running-minikube-vm)
+    - [Get ip where minikube VM is exposed](#get-ip-where-minikube-vm-is-exposed)
+  - [kubectl](#kubectl)
+    - [Apply a configuration file](#apply-a-configuration-file)
+    - [See running objects of a given kind](#see-running-objects-of-a-given-kind)
+    - [(imperatively) change a container version](#imperatively-change-a-container-version)
 
 # CLI
 
@@ -390,3 +400,43 @@ CMD['5']
 ```
 
 In that dockerfile the default command run is `sleep 5`, but if you override it as in the previous example, `CMD` will be overwritten and `sleep 10` will be run.
+
+# Kubernetes
+
+## minikube
+
+### Start a new minikube VM
+
+`minikube start`
+
+### Start a new minikube VM with a specific driver
+
+`minikube start -driver=[driver name]`
+
+### Stop and delete a running minikube VM
+
+`minikube delete`
+
+### Get ip where minikube VM is exposed
+
+`minikube ip`
+
+## kubectl
+
+### Apply a configuration file
+
+`kubectl apply -f [file name]`
+
+### See running objects of a given kind
+
+`kubectl get [object kind]`
+
+e.g. `kubectl get pods`
+
+### (imperatively) change a container version
+
+`kubectl set image [object type]/[object name] [container name]=[new image to use]`
+
+e.g.
+
+`kubectl set image deployment/client-deployment client=pouannes/image_name:latest`
