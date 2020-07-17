@@ -70,6 +70,23 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Copy directory](#copy-directory)
     - [Specify command ran when the container is run](#specify-command-ran-when-the-container-is-run)
 - [Kubernetes](#kubernetes)
+  - [Concepts](#concepts)
+    - [What is a k8s node?](#what-is-a-k8s-node)
+    - [What is a k8s cluster?](#what-is-a-k8s-cluster)
+    - [What is meant by Imperative vs Declarative deployments?](#what-is-meant-by-imperative-vs-declarative-deployments)
+    - [Is it best to use Imperative or Declarative deployments?](#is-it-best-to-use-imperative-or-declarative-deployments)
+    - [Objects](#objects)
+      - [What are the k8s objects?](#what-are-the-k8s-objects)
+      - [What is a Pod?](#what-is-a-pod)
+      - [What is a Deployment?](#what-is-a-deployment)
+      - [What is a Service?](#what-is-a-service)
+      - [What is a NodePort service?](#what-is-a-nodeport-service)
+      - [What is a ClusterIP Service?](#what-is-a-clusterip-service)
+      - [What is a LoadBalancer Service?](#what-is-a-loadbalancer-service)
+    - [Volumes (in a general sense)](#volumes-in-a-general-sense)
+      - [What are volumes in k8s?](#what-are-volumes-in-k8s)
+      - [What are persistent volumes in k8s?](#what-are-persistent-volumes-in-k8s)
+      - [What are persistent volume claims?](#what-are-persistent-volume-claims)
   - [minikube](#minikube)
     - [Start a new minikube VM](#start-a-new-minikube-vm)
     - [Start a new minikube VM with a specific driver](#start-a-new-minikube-vm-with-a-specific-driver)
@@ -407,6 +424,77 @@ CMD['5']
 In that dockerfile the default command run is `sleep 5`, but if you override it as in the previous example, `CMD` will be overwritten and `sleep 10` will be run.
 
 # Kubernetes
+
+## Concepts
+
+### What is a k8s node?
+
+A k8s node is a single VM instance that is running k8s and have different objects within it.
+
+### What is a k8s cluster?
+
+A k8s cluster is a set of k8s nodes. It's usually the level at which you work in k8s.
+
+### What is meant by Imperative vs Declarative deployments?
+
+There's two ways to interact with k8s:
+
+- Imperatively: you use kubectl to directly tell k8s what you want, for example something like "create a pod with this container inside it"
+- Declaratively: you use a config file detailing the way you want your k8s cluster to behave, and let the k8s engine figure out how to best reach the associated state and behaviour.
+
+### Is it best to use Imperative or Declarative deployments?
+
+Usually it's best to use declarative deployments: it's what makes k8s really powerful. You just tell k8s what you want and let it figure out how to do it.
+
+However there's some actions that are way easier to do declaratively and in those cases you may use imperative deployments. For example, making existing pods update their containers image version is more straightforward to do in a declarative fashion
+
+### Objects
+
+#### What are the k8s objects?
+
+In Kubernetes you mainly work through objects that you define with yaml configuration files. The k8s engine then works to respect what's defined in those config files as much as it can. For example if you want 8 workers containers, it will work to have 8 at all times; if one goes down it will try to boot one back up (though this is configurable behaviour).
+
+These objects can have lots of different functions, like: running containers, setting up networking between the containers, accepting outside network requests, setting up requests, ...
+
+#### What is a Pod?
+
+A Pod is a k8s object that is used to run containers. Usually only one type of container is run per type of pod, although there can be exceptions. For example, if two containers are very tightly coupled it might make sense to make them run in the same pod.
+
+#### What is a Deployment?
+
+A Deployment is a k8s object that is used to make pods. Usually you don't create pods directly yourself; you create Deployments and specify the number and type of pods you want inside it.
+
+#### What is a Service?
+
+A Service is a type of k8s object used for networking between in a k8s cluster.
+
+#### What is a NodePort service?
+
+A NodePort Service is a k8s Service object that exposes a set of pods to the outside world. It's mainly used for devlopment purposes.
+
+#### What is a ClusterIP Service?
+
+A ClusterIP Service is a k8s Service object that exposes a set of pods to other objects in the cluster. It's used to set up networking between objects in a cluster, _not_ with the outside world.
+
+#### What is a LoadBalancer Service?
+
+It's a k8s Service object which is a legacy way of getting network traffic into a cluster.
+
+### Volumes (in a general sense)
+
+#### What are volumes in k8s?
+
+In k8s you have to be careful when you speak about volumes: there's the generic "volume" meaning in CS which means some part of a disk filesystem, but k8s also has its own volume definition.
+
+A Volume in k8s is a part of a container filesystem. So when you create a Volume inside a container, it will die with it.
+
+#### What are persistent volumes in k8s?
+
+Persistent volumes are k8s volumes created at the level of a pod. So different containers inside the same pod can access the same volume if needed, and if a container dies the volume persists. However, the persistent volume dies with the pod.
+
+#### What are persistent volume claims?
+
+Persistent volume claims are a k8s volumes created at the level of a cluster. Thus they aren't affected by the death of a specific pod. It's called a claim because you ask the k8s engine for the volume, which might or might not be already provisioned.
 
 ## minikube
 
