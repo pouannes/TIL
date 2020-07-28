@@ -37,6 +37,8 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [add origin remote](#add-origin-remote)
     - [Undo last commit (and preserve the changes done to the files)](#undo-last-commit-and-preserve-the-changes-done-to-the-files)
     - [Undo last commit (and DO NOT preserve the changes done to the files)](#undo-last-commit-and-do-not-preserve-the-changes-done-to-the-files)
+    - [See all tracked files](#see-all-tracked-files)
+    - ["Unadd" a file](#unadd-a-file)
   - [General stuff](#general-stuff-2)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
     - [See volumes and use](#see-volumes-and-use)
@@ -260,6 +262,14 @@ e.g. `git remote rm origin`
 
 `git reset --hard HEAD~1`
 
+### See all tracked files
+
+`git ls-tree -r master --name-only`
+
+### "Unadd" a file
+
+`git reset [path/to/file]`
+
 ## General stuff
 
 ### Count the number of files in a directory
@@ -439,6 +449,7 @@ A k8s cluster is a set of k8s nodes. It's usually the level at which you work in
 
 There's two ways to interact with k8s:
 
+$$
 - Imperatively: you use kubectl to directly tell k8s what you want, for example something like "create a pod with this container inside it"
 - Declaratively: you use a config file detailing the way you want your k8s cluster to behave, and let the k8s engine figure out how to best reach the associated state and behaviour.
 
@@ -547,3 +558,4 @@ e.g.
 ### Exec a command inside a container
 
 `kubectl exec [pod name]`
+$$
