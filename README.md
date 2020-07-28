@@ -39,6 +39,7 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Undo last commit (and DO NOT preserve the changes done to the files)](#undo-last-commit-and-do-not-preserve-the-changes-done-to-the-files)
     - [See all tracked files](#see-all-tracked-files)
     - ["Unadd" a file](#unadd-a-file)
+    - [Remove file from git repo (but not the filesystem)](#remove-file-from-git-repo-but-not-the-filesystem)
   - [General stuff](#general-stuff-2)
     - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
     - [See volumes and use](#see-volumes-and-use)
@@ -269,6 +270,12 @@ e.g. `git remote rm origin`
 ### "Unadd" a file
 
 `git reset [path/to/file]`
+
+### Remove file from git repo (but not the filesystem)
+
+`git rm --cached [file]`
+
+then you can `git commit` the change
 
 ## General stuff
 
