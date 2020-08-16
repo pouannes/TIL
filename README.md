@@ -3,7 +3,7 @@
 Random programming stuff I always forget and spend too much time looking up again
 
 - [CLI](#cli)
-  - [Shortcuts](#shortcuts)
+  - [Keyboard Shortcuts](#keyboard-shortcuts)
     - [Move cursor at the beginning of the line](#move-cursor-at-the-beginning-of-the-line)
     - [Move cursor at the end of the line](#move-cursor-at-the-end-of-the-line)
     - [Delete all characters from the cursor to the beginning of the line](#delete-all-characters-from-the-cursor-to-the-beginning-of-the-line)
@@ -11,6 +11,39 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Delete the word to the left of the cursor](#delete-the-word-to-the-left-of-the-cursor)
     - [Redraw the screen at the prompt](#redraw-the-screen-at-the-prompt)
     - [Transpose a character at the cursor with a character to the left of the cursor](#transpose-a-character-at-the-cursor-with-a-character-to-the-left-of-the-cursor)
+  - [git](#git)
+    - [list remotes](#list-remotes)
+    - [remove existing remote](#remove-existing-remote)
+    - [add origin remote](#add-origin-remote)
+    - [Undo last commit (and preserve the changes done to the files)](#undo-last-commit-and-preserve-the-changes-done-to-the-files)
+    - [Undo last commit (and DO NOT preserve the changes done to the files)](#undo-last-commit-and-do-not-preserve-the-changes-done-to-the-files)
+    - [See all tracked files](#see-all-tracked-files)
+    - ["Unadd" a file](#unadd-a-file)
+    - [Remove file from git repo (but not the filesystem)](#remove-file-from-git-repo-but-not-the-filesystem)
+  - [SSH](#ssh)
+    - [Connect to an instance via .pem file](#connect-to-an-instance-via-pem-file)
+    - [Create an SSH tunnel (for example for jupyter notebooks)](#create-an-ssh-tunnel-for-example-for-jupyter-notebooks)
+    - [Copying files between local computer and instance](#copying-files-between-local-computer-and-instance)
+  - [Bash](#bash)
+    - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
+    - [See volumes and use](#see-volumes-and-use)
+  - [tmux](#tmux)
+    - [create a new session](#create-a-new-session)
+    - [Prefix shortcut (command mode)](#prefix-shortcut-command-mode)
+    - [Detach from session](#detach-from-session)
+    - [List active sessions](#list-active-sessions)
+    - [Attach to an active session by index or name](#attach-to-an-active-session-by-index-or-name)
+    - [Attach to last created session](#attach-to-last-created-session)
+    - [Name a new session](#name-a-new-session)
+    - [Kill a named session](#kill-a-named-session)
+    - [Kill current pane](#kill-current-pane)
+    - [Kill tmux server along with all sessions](#kill-tmux-server-along-with-all-sessions)
+    - [Split a pane horizontally](#split-a-pane-horizontally)
+    - [Split a pane vertically](#split-a-pane-vertically)
+    - [Move between panes](#move-between-panes)
+    - [Cycle through panes](#cycle-through-panes)
+    - [Cycle through previous and current pane](#cycle-through-previous-and-current-pane)
+    - [Resize panes](#resize-panes)
 - [gcloud CLI](#gcloud-cli)
   - [General stuff](#general-stuff)
     - [Get current project id](#get-current-project-id)
@@ -25,24 +58,6 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Switch to environments and back](#switch-to-environments-and-back)
     - [List all environments](#list-all-environments)
     - [Add a conda env to jupyter notebooks](#add-a-conda-env-to-jupyter-notebooks)
-- [SSH](#ssh)
-  - [General stuff](#general-stuff-1)
-    - [Connect to an instance via .pem file](#connect-to-an-instance-via-pem-file)
-    - [Create an SSH tunnel (for example for jupyter notebooks)](#create-an-ssh-tunnel-for-example-for-jupyter-notebooks)
-    - [Copying files between local computer and instance](#copying-files-between-local-computer-and-instance)
-- [Bash](#bash)
-  - [git](#git)
-    - [list remotes](#list-remotes)
-    - [remove existing remote](#remove-existing-remote)
-    - [add origin remote](#add-origin-remote)
-    - [Undo last commit (and preserve the changes done to the files)](#undo-last-commit-and-preserve-the-changes-done-to-the-files)
-    - [Undo last commit (and DO NOT preserve the changes done to the files)](#undo-last-commit-and-do-not-preserve-the-changes-done-to-the-files)
-    - [See all tracked files](#see-all-tracked-files)
-    - ["Unadd" a file](#unadd-a-file)
-    - [Remove file from git repo (but not the filesystem)](#remove-file-from-git-repo-but-not-the-filesystem)
-  - [General stuff](#general-stuff-2)
-    - [Count the number of files in a directory](#count-the-number-of-files-in-a-directory)
-    - [See volumes and use](#see-volumes-and-use)
 - [Docker](#docker)
   - [Docker CLI](#docker-cli)
     - [Start a container (and flags)](#start-a-container-and-flags)
@@ -105,7 +120,7 @@ Random programming stuff I always forget and spend too much time looking up agai
 
 # CLI
 
-## Shortcuts
+## Keyboard Shortcuts
 
 ### Move cursor at the beginning of the line
 
@@ -134,6 +149,164 @@ Random programming stuff I always forget and spend too much time looking up agai
 ### Transpose a character at the cursor with a character to the left of the cursor
 
 `ctrl + t`
+
+## git
+
+### list remotes
+
+`git remote -v`
+
+### remove existing remote
+
+`git remote rm [remote name]`
+
+e.g. `git remote rm origin`
+
+### add origin remote
+
+`git remote add origin [remote link]`
+
+### Undo last commit (and preserve the changes done to the files)
+
+`git reset --soft HEAD~1`
+
+`HEAD~1` means you want to reset the `HEAD` to one commit before in the log history.
+
+### Undo last commit (and DO NOT preserve the changes done to the files)
+
+`git reset --hard HEAD~1`
+
+### See all tracked files
+
+`git ls-tree -r master --name-only`
+
+### "Unadd" a file
+
+`git reset [path/to/file]`
+
+### Remove file from git repo (but not the filesystem)
+
+`git rm --cached [file]`
+
+then you can `git commit` the change
+
+## SSH
+
+### Connect to an instance via .pem file
+
+`ssh -i [.pem file] [user]@[ip adress]`
+
+flags:
+
+- `-v` for verbose mode
+
+### Create an SSH tunnel (for example for jupyter notebooks)
+
+`ssh [user]@[ip address] -i [.pem file] -N -L localhost:[local port]:localhost:[remote port]`
+
+For example to redirect a remote notebook (open through `jupyter notebook --no-browser --port 8887`):
+`ssh -v [user]@[ip] -i [.pem file] -N -L localhost:8888:localhost:8887%`
+
+### Copying files between local computer and instance
+
+`scp -i [.pem file] [local file] [user]@[ip]:[remote path]`
+
+To copy entire directories, add the `r` recursive option after the key.
+
+## Bash
+
+### Count the number of files in a directory
+
+`ls [dir] | wc -l`
+
+### See volumes and use
+
+`df -H`
+
+`-H` is to convert to bites or bytes, never remember which one (`-h` is for the other one).
+
+## tmux
+
+### create a new session
+
+`tmux new`
+
+or more simply
+
+`tmux`
+
+### Prefix shortcut (command mode)
+
+`ctrl+b` by default
+
+### Detach from session
+
+`ctrl+b d`
+
+### List active sessions
+
+`tmux ls`
+
+### Attach to an active session by index or name
+
+`tmux attach-session -t [index or name]`
+
+`attach-session` can be also simply `a`, as in:
+
+`tmux a -t [index]`
+
+### Attach to last created session
+
+`tmux a #`
+
+### Name a new session
+
+`tmux new -s [name of session]`
+
+### Kill a named session
+
+`ctrl+b kill-session -t [name of session]`
+
+### Kill current pane
+
+`ctrl+b x`
+
+### Kill tmux server along with all sessions
+
+`tmux kill-server`
+
+### Split a pane horizontally
+
+`ctrl+b "`
+
+### Split a pane vertically
+
+`ctrl+b %`
+
+### Move between panes
+
+`ctrl+b [arrow key]`
+
+### Cycle through panes
+
+`ctrl+b o`
+
+### Cycle through previous and current pane
+
+`ctrl+b ;`
+
+### Resize panes
+
+`ctrl_b :` to get into the tmux prompt, then type:
+
+`resize-pane` followed by a direction flag (`-U` fo up, `-D` for down, `-L` for left and `-R` for right) and the number of lines to move over by.
+
+For example to expand the top pane by 2 lines:
+
+```
+ctrl+b :
+resize-pane -D 2
+```
 
 # gcloud CLI
 
@@ -209,85 +382,6 @@ First make sure to have `ipykernel` installed:
 Then add the env:
 
 `python -m ipykernel install --user --name=[env name]`
-
-# SSH
-
-## General stuff
-
-### Connect to an instance via .pem file
-
-`ssh -i [.pem file] [user]@[ip adress]`
-
-flags:
-
-- `-v` for verbose mode
-
-### Create an SSH tunnel (for example for jupyter notebooks)
-
-`ssh [user]@[ip address] -i [.pem file] -N -L localhost:[local port]:localhost:[remote port]`
-
-For example to redirect a remote notebook (open through `jupyter notebook --no-browser --port 8887`):
-`ssh -v [user]@[ip] -i [.pem file] -N -L localhost:8888:localhost:8887%`
-
-### Copying files between local computer and instance
-
-`scp -i [.pem file] [local file] [user]@[ip]:[remote path]`
-
-To copy entire directories, add the `r` recursive option after the key.
-
-# Bash
-
-## git
-
-### list remotes
-
-`git remote -v`
-
-### remove existing remote
-
-`git remote rm [remote name]`
-
-e.g. `git remote rm origin`
-
-### add origin remote
-
-`git remote add origin [remote link]`
-
-### Undo last commit (and preserve the changes done to the files)
-
-`git reset --soft HEAD~1`
-
-`HEAD~1` means you want to reset the `HEAD` to one commit before in the log history.
-
-### Undo last commit (and DO NOT preserve the changes done to the files)
-
-`git reset --hard HEAD~1`
-
-### See all tracked files
-
-`git ls-tree -r master --name-only`
-
-### "Unadd" a file
-
-`git reset [path/to/file]`
-
-### Remove file from git repo (but not the filesystem)
-
-`git rm --cached [file]`
-
-then you can `git commit` the change
-
-## General stuff
-
-### Count the number of files in a directory
-
-`ls [dir] | wc -l`
-
-### See volumes and use
-
-`df -H`
-
-`-H` is to convert to bites or bytes, never remember which one (`-h` is for the other one).
 
 # Docker
 
