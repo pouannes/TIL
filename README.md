@@ -117,6 +117,9 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [(imperatively) change a container version](#imperatively-change-a-container-version)
     - [Get the logs of a container](#get-the-logs-of-a-container)
     - [Exec a command inside a container](#exec-a-command-inside-a-container)
+- [SQL](#sql)
+  - [psql](#psql)
+    - [Connect to a database](#connect-to-a-database)
 
 # CLI
 
@@ -659,4 +662,21 @@ e.g.
 ### Exec a command inside a container
 
 `kubectl exec [pod name]`
+
+
+
+
+# SQL
+
+## psql
+
+### Connect to a database
+
+`psql -h [hostname] -p [port] -U [user]`
+
+e.g.
+
+`psql -h localhost -p 5432 -U postgres`
+
+You can also add the `-W` flag to force postgres to ask you for a password
 $$
