@@ -12,6 +12,10 @@ Random programming stuff I always forget and spend too much time looking up agai
     - [Redraw the screen at the prompt](#redraw-the-screen-at-the-prompt)
     - [Transpose a character at the cursor with a character to the left of the cursor](#transpose-a-character-at-the-cursor-with-a-character-to-the-left-of-the-cursor)
   - [git](#git)
+    - [create a new branch](#create-a-new-branch)
+    - [Switch to an existing branch](#switch-to-an-existing-branch)
+    - [create a new branch and switch to it](#create-a-new-branch-and-switch-to-it)
+    - [push new branch to a remote](#push-new-branch-to-a-remote)
     - [list remotes](#list-remotes)
     - [remove existing remote](#remove-existing-remote)
     - [add origin remote](#add-origin-remote)
@@ -154,6 +158,24 @@ Random programming stuff I always forget and spend too much time looking up agai
 `ctrl + t`
 
 ## git
+
+### create a new branch
+
+`git branch [branch name]`
+
+### Switch to an existing branch
+
+`git checkout [branch name]`
+
+### create a new branch and switch to it
+
+`git checkout -b [branch name]`
+
+### push new branch to a remote
+
+`git push -u [remote name] [branch name]`
+
+e.g. `git push -u origin feature`
 
 ### list remotes
 
@@ -619,7 +641,7 @@ Persistent volume claims are a k8s volumes created at the level of a cluster. Th
 
 ### Start a new minikube VM with a specific driver
 
-`minikube start -driver=[driver name]`
+`minikube start --driver=[driver name]`
 
 ### Stop and delete a running minikube VM
 
